@@ -1,0 +1,97 @@
+1. GET Запрос без параметров
+nc -C httpbin.org 80
+GET /anything HTTP/1.1
+Host: httpbin.org
+
+HTTP/1.1 200 OK
+Date: Sat, 15 Feb 2020 06:16:12 GMT
+Content-Type: application/json
+Content-Length: 286
+Connection: keep-alive
+Server: gunicorn/19.9.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-5e478cac-04b05a4b83ce4caf19b7f4c2"
+  }, 
+  "json": null, 
+  "method": "GET", 
+  "origin": "37.232.144.29", 
+  "url": "http://httpbin.org/anything"
+}
+
+2. GET запрос с любыми параметрами строки URL
+nc -C httpbin.org 80
+GET /anything?param=one HTTP/1.1
+Host: httpbin.org
+
+HTTP/1.1 200 OK
+Date: Sat, 15 Feb 2020 06:32:00 GMT
+Content-Type: application/json
+Content-Length: 318
+Connection: keep-alive
+Server: gunicorn/19.9.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+
+{
+  "args": {
+    "param": "one"
+  }, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-5e479060-2d12335cf5e0b7758fee368d"
+  }, 
+  "json": null, 
+  "method": "GET", 
+  "origin": "37.232.144.29", 
+  "url": "http://httpbin.org/anything?param=one"
+}
+
+3. POST запрос с  любыми параметрами
+nc -C httpbin.org 80
+POST /anything HTTP/1.1
+Host: httpbin.org
+Content-Length: 6
+      
+name=1
+HTTP/1.1 200 OK
+Date: Sat, 15 Feb 2020 07:13:05 GMT
+Content-Type: application/json
+Content-Length: 321
+Connection: keep-alive
+Server: gunicorn/19.9.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+
+{
+  "args": {}, 
+  "data": "name=1", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Content-Length": "6", 
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-5e4799fb-a1338af84ec864e07253d6ea"
+  }, 
+  "json": null, 
+  "method": "POST", 
+  "origin": "37.232.144.29", 
+  "url": "http://httpbin.org/anything"
+}
+
+
+
+
+
+
